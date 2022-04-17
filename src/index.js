@@ -81,9 +81,23 @@ function displayItem(dataset){
     card.appendChild(img)
     card.appendChild(p)
     card.appendChild(btn)
-
+    btn.addEventListener('click', ()=> {
+      data.likes += 1;
+      updateLike(data)
+    })
   });
   
 
 
+}
+
+function updateLike(data){
+  fetch(`http://localhost:3000/toys/${data.id}`, {
+    method : "PATCH",
+    headers : {
+      "Content-Type" : "application/json"
+    },
+    body : JSON.stringify(data)
+  })
+  .then()
 }
